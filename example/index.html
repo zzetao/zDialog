@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title>zDialog Example</title>
+		<link rel="stylesheet" type="text/css" href="normalize.css">
+		<link rel="stylesheet" href="../src/style.css">
+		<link rel="stylesheet" href="../src/skin.css">
+		<style>
+			body {
+				background: #eee;
+				font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+			}
+			.example-wrap {
+				width: 600px;
+				margin: 0 auto;
+				min-height: 800px;
+				background: #fff;
+				border-left: 1px solid #ddd;
+				border-right: 1px solid #ddd;
+			}
+			.example-section {
+				padding: 10px;
+				padding-bottom: 20px;
+				border-bottom: 1px solid #ddd;
+			}
+			.example-title {
+				text-align: center;
+				border-bottom: 1px solid #ddd;
+				padding: 18px 0;
+				margin: 0;
+			}
+
+			.example-section > h3 {
+		    border-left: 4px solid #4690f4;
+		    padding-left: 9px;
+		    color: #4690f4;
+		    margin-left: -10px;
+		    margin-bottom: 15px;
+			}
+
+			.button {
+				background: #b0b1b2;
+				border-radius: 4px;
+				border: 0;
+				color: #fff;
+				padding: 6px 19px;
+			}
+
+			.button:hover {
+				background: #4690f4;
+			}
+			.button[disabled] {
+				background: #ddd;
+			}
+		</style>
+	</head>
+<body>
+	<div class="example-wrap">
+		<h1 class="example-title">Dialog Example</h1>			
+		
+		<div class="example-section">
+			<h3>Msg</h3>
+			<button id="msgBtn" class="button">默认展示</button>
+			<button id="skinMsgBtn" class="button">风格1</button>
+			<button id="msgBtn" class="button" disabled>带 Icon 展示</button>
+			<button id="msgBtn" class="button" disabled>带 Button 展示</button>
+		</div>
+
+		<div class="example-section">
+			<h3>Alert</h3>
+			<button id="alertBtn" class="button">默认展示</button>
+			<button id="iosAlertBtn" class="button">iOS警告消息框</button>
+		</div>
+
+		<div class="example-section">
+			<h3>Confirm</h3>
+			<button id="confirmBtn" class="button">默认展示</button>
+			<button id="iosConfirmBtn" class="button">iOS确认消息框</button>
+		</div>
+	</div>
+</body>
+<script src="../src/dialog.js"></script>
+<script>
+(function(){
+	function $(id) {
+		return document.getElementById(id);
+	};
+
+	$('msgBtn').onclick = function() {
+		zDialog.msg('日照香炉生紫烟，遥看瀑布挂前川。');
+	};
+	$('skinMsgBtn').onclick = function () {
+		zDialog.msg('飞流直下三千尺，疑是银河落九天。', {
+			skin: 'z-dialog-msg1'
+		});
+	}
+
+
+	$('alertBtn').onclick = function() {
+		// zDialog.alert('this is a alert');
+		zDialog.alert({
+			title: '早发白帝城',
+			content: '朝辞白帝彩云间，千里江陵一日还。<br> 两岸猿声啼不住，轻舟已过万重山。'
+		}, function() {
+			console.log('outside: yes')
+		})
+	};
+	$('iosAlertBtn').onclick = function() {
+		zDialog.alert({
+			title: '李白',
+			content: '床前明月光，疑是地上霜。',
+			skin: 'z-ios-popup'
+		}, function(){
+			
+		})
+	}
+
+
+	$('confirmBtn').onclick = function() {
+		zDialog.confirm({
+			title: '静夜思',
+			maxWidth: 600,
+			content: '这是写远客思乡之情的诗，诗以明白如话的语言雕琢出明静醉人的秋夜的意境。它不追求想象的新颖奇特，也摒弃了辞藻的精工华美；它以清新朴素的笔触，抒写了丰富深曲的内容。境是境，情是情，那么逼真，那么动人，百读不厌，耐人寻绎。无怪乎有人赞它是“妙绝古今”。',
+		}, function() {
+			console.log('hello ok');
+		}, function() {
+			console.log('hello no')
+		})
+	}
+
+	$('iosConfirmBtn').onclick = function() {
+		zDialog.confirm({
+			title: '静夜思',
+			content: '这是写远客思乡之情的诗，诗以明白如话的语言雕琢出明静醉人的秋夜的意境。它不追求想象的新颖奇特，也摒弃了辞藻的精工华美；它以清新朴素的笔触，抒写了丰富深曲的内容。境是境，情是情，那么逼真，那么动人，百读不厌，耐人寻绎。无怪乎有人赞它是“妙绝古今”。',
+			skin: 'z-ios-popup'
+		}, function(){
+			
+		})
+	}
+
+})()
+</script>
+</html>

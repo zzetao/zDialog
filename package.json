@@ -1,0 +1,11 @@
+{
+  "name": "dialog",
+  "version": "1.0.0",
+  "description": "A pure javascript dialog",
+  "main": "index.js",
+  "author": "zzetao <izzetao@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
